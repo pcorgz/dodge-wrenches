@@ -15,11 +15,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float resetDashTime = 3f;
     [SerializeField]
-    private GameObject body;
+    private GameObject body = null;
     [SerializeField]
-    private LayerMask wallLayerMask;
+    private LayerMask wallLayerMask = 0;
     [SerializeField]
-    private Image dashMeterBar;
+    private Image dashMeterBar = null;
 
     private bool isDashing;
     private bool canDash;
@@ -64,12 +64,12 @@ public class PlayerMovement : MonoBehaviour
         if (horizontal > 0)
         {
             isLookingRight = true;
-            body.transform.localScale = new Vector3(-1f, 1f, 1f);
+            body.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         else if (horizontal < 0)
         {
             isLookingRight = false;
-            body.transform.localScale = new Vector3(1f, 1f, 1f);
+            body.transform.rotation = Quaternion.Euler(0f,  0f, 0f);
         }
     }
 
