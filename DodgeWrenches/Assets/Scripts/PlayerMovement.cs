@@ -12,10 +12,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float maxTimeDashing = .5f;
     [SerializeField]
+    private float resetDashTime = 3f;
+    [SerializeField]
     private GameObject body;
+    [SerializeField]
+    private LayerMask wallLayerMask;
 
     private bool isDashing;
-    //private float timeDashing;
+    private bool canDash;
     private bool isLookingRight;
     private Rigidbody rb;
     private float horizontal;
@@ -28,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         isDashing = false;
-        //timeDashing = maxTimeDashing;
+        canDash = true;
         isLookingRight = true;
     }
 
@@ -62,14 +66,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isDashing == false)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
-            horizontal = 0f;
+            canDash = false;
             isDashing = true;
+            horizontal = 0f;
             StartCoroutine(Dash());
         }
 
-        // Not dashing
         if (isDashing == false)
         {
             // not dashing so we can move
@@ -84,8 +88,22 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(maxTimeDashing);
 
-        isDashing = false;
         rb.velocity = Vector3.zero;
+        isDashing = false;
+        StartCoroutine(ResetDash());
     }
 
+    private IEnumerator ResetDash()
+    {
+        yield return new WaitForSeconds(resetDashTime);
+        canDash = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == wallLayerMask)
+        {
+            horizontal = 0;
+        }
+    }
 }

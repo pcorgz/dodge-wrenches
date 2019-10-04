@@ -523,6 +523,9 @@ MonoBehaviour:
   dashVelocity: 40
   maxTimeDashing: 0.1
   body: {fileID: 1431394955}
+  wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &1257884308
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +573,7 @@ GameObject:
   - component: {fileID: 1428932372}
   - component: {fileID: 1428932371}
   - component: {fileID: 1428932374}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +758,7 @@ GameObject:
   - component: {fileID: 1470231594}
   - component: {fileID: 1470231593}
   - component: {fileID: 1470231592}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
