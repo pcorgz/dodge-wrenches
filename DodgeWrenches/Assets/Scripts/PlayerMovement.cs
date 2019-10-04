@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject body;
     [SerializeField]
     private LayerMask wallLayerMask;
+    [SerializeField]
+    private Image dashMeterBar;
 
     private bool isDashing;
     private bool canDash;
@@ -39,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Movement();
+        if (canDash == false)
+        {
+            dashMeterBar.transform.localScale += new Vector3(Time.deltaTime / resetDashTime, 0f);
+            if (dashMeterBar.transform.localScale.x >= 1)
+                dashMeterBar.transform.localScale = Vector3.one;
+        }
     }
 
     private void FixedUpdate()
@@ -71,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             canDash = false;
             isDashing = true;
             horizontal = 0f;
+            dashMeterBar.transform.localScale = new Vector3(0f, 1f, 1f);
             StartCoroutine(Dash());
         }
 
@@ -83,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+
         float velocity = isLookingRight ? dashVelocity : -dashVelocity;
         rb.velocity = new Vector3(velocity, 0f);
 
