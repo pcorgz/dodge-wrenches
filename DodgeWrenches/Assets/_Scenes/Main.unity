@@ -893,6 +893,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683758858}
   m_CullTransparentMesh: 0
+--- !u!1 &871209416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871209419}
+  - component: {fileID: 871209418}
+  - component: {fileID: 871209417}
+  m_Layer: 0
+  m_Name: Wrench Spawner 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &871209417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871209416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a62f806b67afd47b4aca21f54d9d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToStart: 3
+  minTimeToSpawn: 0.3
+  maxTimeToSpawn: 3
+  wrenchPrefab: {fileID: 566136757692879072, guid: d55e74506d475a8458b5aaeb476211d2,
+    type: 3}
+--- !u!114 &871209418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871209416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6224ca213c48f464a8628155517fca87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPosX: -7
+  maxPosX: 7
+  moveSpeed: 20
+--- !u!4 &871209419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871209416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915076289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,8 +1355,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1431215951}
   - component: {fileID: 1431215950}
+  - component: {fileID: 1431215952}
   m_Layer: 0
-  m_Name: Wrench Spawner
+  m_Name: Wrench Spawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1321,12 +1386,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431215949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: -8, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431215952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431215949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a62f806b67afd47b4aca21f54d9d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToStart: 3
+  minTimeToSpawn: 0.2
+  maxTimeToSpawn: 2.5
+  wrenchPrefab: {fileID: 566136757692879072, guid: d55e74506d475a8458b5aaeb476211d2,
+    type: 3}
 --- !u!1 &1431394955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1775,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1510370859}
   - component: {fileID: 1510370858}
-  - component: {fileID: 1510370860}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -1728,24 +1809,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1510370860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510370857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a62f806b67afd47b4aca21f54d9d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secondsToStart: 5
-  minTimeToSpawn: 2
-  maxTimeToSpawn: 5
-  spawnPoint: {fileID: 1431215951}
-  wrenchPrefab: {fileID: 566136757692879072, guid: d55e74506d475a8458b5aaeb476211d2,
-    type: 3}
 --- !u!1 &1594206788
 GameObject:
   m_ObjectHideFlags: 0

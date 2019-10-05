@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.isGameOver) return;
+
         Movement();
         if (canDash == false)
         {
@@ -52,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.isGameOver) return;
+
         if (isDashing == false)
         {
             rb.position += new Vector3(horizontal, 0f);
@@ -114,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.layer == wallLayerMask)
         {
+            rb.velocity = Vector3.zero;
             horizontal = 0;
         }
     }

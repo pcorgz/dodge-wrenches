@@ -10,24 +10,22 @@ public class SpawnWrenches : MonoBehaviour
     [SerializeField]
     private float maxTimeToSpawn = 5f;
     [SerializeField]
-    private Transform spawnPoint = null;
-    [SerializeField]
     private GameObject wrenchPrefab = null;
 
-    private bool startGame;
+    private bool startSpawning;
     private float timeUntilNextSpawn;
     private float spawnTimer;
 
     private void Start()
     {
-        startGame = false;
-        StartCoroutine(WaitTimeToStart());
+        startSpawning = false;
         spawnTimer = 0;
+        StartCoroutine(WaitTimeToStart());
     }
 
     private void Update()
     {
-        if (startGame == false) return;
+        if (startSpawning == false || GameManager.isGameOver) return;
 
         spawnTimer += Time.deltaTime;
 
@@ -45,13 +43,13 @@ public class SpawnWrenches : MonoBehaviour
     private IEnumerator WaitTimeToStart()
     {
         yield return new WaitForSecondsRealtime(secondsToStart);
-        startGame = true;
+        startSpawning = true;
     }
 
     private void SpawnWrench()
     {
         SetSpawnTime();
         spawnTimer = 0;
-        Instantiate(wrenchPrefab, spawnPoint.position, Random.rotationUniform);
+        Instantiate(wrenchPrefab, transform.position, Random.rotationUniform);
     }
 }
