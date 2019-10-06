@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HarmRemover : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(HarmPlayer.HARMFUL_TAG))
@@ -16,6 +19,8 @@ public class HarmRemover : MonoBehaviour
             var rb = root.gameObject.GetComponent<Rigidbody>();
             rb.useGravity = true;
             Destroy(root.gameObject, 2f);
+
+            other.gameObject.layer = 13;
         }
     }
 }

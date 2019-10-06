@@ -168,5 +168,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701905050c961084c92e95fc682a6052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFallingVelocity: -8
+  minFallingVelocity: -5
   maxFallingVelocity: -15

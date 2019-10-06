@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
         if (PlayerStats.Health == 0)
         {
             isGameOver = true;
-
         }
     }
 }

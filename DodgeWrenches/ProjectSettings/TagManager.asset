@@ -20,7 +20,7 @@ TagManager:
   - NoColliderZone
   - Ground
   - Walls
-  - 
+  - NotWithPlayer
   - 
   - 
   - 

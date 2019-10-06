@@ -9,7 +9,11 @@ public class SpawnerMover : MonoBehaviour
     [SerializeField]
     private float maxPosX = 0f;
     [SerializeField]
-    private float moveSpeed = 0f;
+    private float moveSpeed = 5f;
+    [SerializeField]
+    private float frequency = 20f;
+    [SerializeField]
+    private float magnitude = 0.5f;
 
     private void Update()
     {
@@ -26,6 +30,8 @@ public class SpawnerMover : MonoBehaviour
     private void FixedUpdate()
     {
         float newPosX = moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(newPosX, 0f);
+        float newPosY = Mathf.Sin(Time.time * frequency) * magnitude;
+
+        transform.position += new Vector3(newPosX, newPosY);
     }
 }
