@@ -17,6 +17,14 @@ public class PlayerStats : MonoBehaviour
         HeartsUI.UpdateHearts();
     }
 
+    public static void Heal(int amount)
+    {
+        Health = (Health + amount >= 4)
+                ? 4
+                : Health + amount;
+        HeartsUI.UpdateHearts();
+    }
+
     public static void Damage(int damage)
     {
         // Avoids negative numbers

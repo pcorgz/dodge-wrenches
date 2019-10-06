@@ -22,5 +22,10 @@ public class HarmRemover : MonoBehaviour
 
             other.gameObject.layer = 13;
         }
+
+        if (other.CompareTag(CollectHeart.HEART_TAG))
+        {
+            Destroy(other.gameObject, 3f);
+        }
     }
 }

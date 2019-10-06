@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SpawnWrenches : MonoBehaviour
+public class SpawnFallingObjects : MonoBehaviour
 {
     [SerializeField]
     private float secondsToStart = 5;
@@ -10,7 +10,9 @@ public class SpawnWrenches : MonoBehaviour
     [SerializeField]
     private float maxTimeToSpawn = 5f;
     [SerializeField]
-    private GameObject wrenchPrefab = null;
+    private GameObject fallingObjectPrefab = null;
+    [SerializeField]
+    private bool hasRandomRotation = false;
 
     private bool startSpawning;
     private float timeUntilNextSpawn;
@@ -31,7 +33,7 @@ public class SpawnWrenches : MonoBehaviour
 
         if (spawnTimer >= timeUntilNextSpawn)
         {
-            SpawnWrench();
+            SpawnNext();
         }
     }
 
@@ -46,10 +48,19 @@ public class SpawnWrenches : MonoBehaviour
         startSpawning = true;
     }
 
-    private void SpawnWrench()
+    private void SpawnNext()
     {
         SetSpawnTime();
         spawnTimer = 0;
-        Instantiate(wrenchPrefab, transform.position, Random.rotationUniform);
+
+        var randRot = hasRandomRotation
+                ? Quaternion.Euler(Random.Range(0, 359), 0f, Random.Range(0, 359))
+                : Quaternion.identity;
+
+        Instantiate(
+                fallingObjectPrefab,
+                transform.position,
+                randRot
+            );
     }
 }
