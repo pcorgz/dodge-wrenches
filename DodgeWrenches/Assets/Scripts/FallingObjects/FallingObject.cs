@@ -26,7 +26,6 @@ public class FallingObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(rb.velocity.y);
         rb.velocity = rb.velocity.y < fallingVelocity
                 ? new Vector3(0f, fallingVelocity)
                 : rb.velocity;
