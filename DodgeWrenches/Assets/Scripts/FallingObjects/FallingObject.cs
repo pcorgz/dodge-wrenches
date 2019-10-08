@@ -11,7 +11,7 @@ public class FallingObject : MonoBehaviour
     private float maxFallingVelocity = 0f;
 
     private Rigidbody rb;
-    private FallingObjectData fallingData;
+    private float fallingVelocity;
 
     private void Awake()
     {
@@ -20,9 +20,15 @@ public class FallingObject : MonoBehaviour
 
     private void Start()
     {
-        float fallingVelocity = Random.Range(minFallingVelocity, maxFallingVelocity);
+        fallingVelocity = Random.Range(minFallingVelocity, maxFallingVelocity);
+        rb.velocity = new Vector3(0f, fallingVelocity);
+    }
 
-        fallingData = new FallingObjectData(fallingVelocity);
-        rb.velocity = new Vector3(fallingData.GetHorizontalVelocity(), fallingData.GetFallingVelocity());
+    private void FixedUpdate()
+    {
+        Debug.Log(rb.velocity.y);
+        rb.velocity = rb.velocity.y < fallingVelocity
+                ? new Vector3(0f, fallingVelocity)
+                : rb.velocity;
     }
 }
