@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     public void Menu()
     {
-        //SceneManager.LoadScene(0);
-        Debug.Log("Go To Menu");
+        SceneManager.LoadScene(0);
     }
 }
