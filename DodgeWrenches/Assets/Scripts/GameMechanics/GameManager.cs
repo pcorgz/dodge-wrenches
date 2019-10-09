@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string menuSceneName = "MainMenu";
     [SerializeField]
-    private GameObject timePlayedText;
+    private GameObject timePlayedText = null;
 
     public static float timePlayed;
     private TextMeshProUGUI timePlayedTextUGUI;
