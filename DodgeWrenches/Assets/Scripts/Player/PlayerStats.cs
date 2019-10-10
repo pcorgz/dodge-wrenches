@@ -10,6 +10,15 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField]
     private int startingHealth = 2;
+    [SerializeField]
+    private GameObject mainCamera = null;
+
+    private static CamShake camShake;
+
+    private void Awake()
+    {
+        camShake = mainCamera.GetComponent<CamShake>();
+    }
 
     private void Start()
     {
@@ -32,5 +41,7 @@ public class PlayerStats : MonoBehaviour
                 ? Health - damage
                 : 0;
         HeartsUI.UpdateHearts();
+
+        camShake.Shake();
     }
 }

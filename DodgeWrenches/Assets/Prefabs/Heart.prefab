@@ -181,3 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b08522a7a1fd04c9756c5cd7d1c9e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyMesh: {fileID: 4099299744200682908}
+  particles: {fileID: 4425496348933615398, guid: e11b39f6768d2a84da89dc3e8d343ba2,
+    type: 3}
