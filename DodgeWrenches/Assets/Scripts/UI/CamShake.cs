@@ -14,7 +14,7 @@ public class CamShake : MonoBehaviour
 
     public void Shake()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(1, 4);
         anim.SetTrigger("cam_shake_" + rand);
     }
 }
