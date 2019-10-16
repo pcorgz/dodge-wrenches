@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         timePlayedTextUGUI = timePlayedText.GetComponent<TextMeshProUGUI>();
+
+        FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        FindObjectOfType<AudioManager>().Play("GameMusic");
     }
 
     private void Start()

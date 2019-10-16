@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
-
+        AudioManager.instance.Play("Dash");
         float velocity = isLookingRight ? dashVelocity : -dashVelocity;
         rb.velocity = new Vector3(velocity, 0f);
 

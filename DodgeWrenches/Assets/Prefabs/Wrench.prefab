@@ -184,3 +184,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minFallingVelocity: -5
   maxFallingVelocity: -15
+  audioManager: {fileID: 3776228237625383994, guid: 18f651f0a1e9f2341afd8c0d70f47a1d,
+    type: 3}

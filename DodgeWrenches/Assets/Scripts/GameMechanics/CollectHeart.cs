@@ -16,7 +16,7 @@ public class CollectHeart : MonoBehaviour
         if (other.gameObject.CompareTag(PlayerStats.PLAYER_TAG))
         {
             PlayerStats.Heal(1);
-            // TODO: play heart collected sound
+            AudioManager.instance.Play("CollectHeart");
 
             var particlesGameObject = Instantiate(particles, transform.position, Quaternion.Euler(-90, 0f, 0f));
 

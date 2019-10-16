@@ -30,4 +30,14 @@ public class FallingObject : MonoBehaviour
                 ? new Vector3(0f, fallingVelocity)
                 : rb.velocity;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            int rand = Random.Range(1, 4);
+
+            AudioManager.instance.Play($"Hit_{rand}");
+        }
+    }
 }

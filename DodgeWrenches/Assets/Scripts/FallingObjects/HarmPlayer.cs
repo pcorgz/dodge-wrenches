@@ -34,7 +34,9 @@ public class HarmPlayer : MonoBehaviour
             PlayerStats.Damage(damage);
 
             BounceOff();
-            // TODO: play sound & player hurt animation
+
+            AudioManager.instance.Play("Clang");
+            // TODO: player hurt animation
         }
     }
 

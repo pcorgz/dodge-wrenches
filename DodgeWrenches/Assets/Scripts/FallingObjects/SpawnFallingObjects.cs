@@ -44,7 +44,7 @@ public class SpawnFallingObjects : MonoBehaviour
 
     private IEnumerator WaitTimeToStart()
     {
-        yield return new WaitForSecondsRealtime(secondsToStart);
+        yield return new WaitForSeconds(secondsToStart);
         startSpawning = true;
     }
 
