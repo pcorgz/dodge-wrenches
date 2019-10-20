@@ -26,19 +26,13 @@ public class PlayerStats : MonoBehaviour
         Health = startingHealth;
     }
 
-    private void Start()
-    {
-        //HeartsUI.UpdateHearts();
-    }
-
     public void Heal(int amount)
     {
         // No more than max
         Health = (Health + amount >= MAX_HEALTH)
                 ? MAX_HEALTH
                 : Health + amount;
-        //HeartsUI.UpdateHearts();
-
+        
         OnPlayerHealthChanged?.Invoke();
     }
 
@@ -48,7 +42,6 @@ public class PlayerStats : MonoBehaviour
         Health = (Health - amount < 0)
                 ? 0
                 : Health - amount;
-        //HeartsUI.UpdateHearts();
 
         OnPlayerHealthChanged?.Invoke();
 

@@ -55,12 +55,10 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Menu()
     {
         sceneFader.FadeTo(menuSceneName);
-        //SceneManager.LoadScene(0);
     }
 }
