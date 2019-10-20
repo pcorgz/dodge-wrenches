@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject timePlayedText = null;
 
+    private PlayerStats playerStats;
     public static float timePlayed;
     private TextMeshProUGUI timePlayedTextUGUI;
 
     private void Awake()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
         timePlayedTextUGUI = timePlayedText.GetComponent<TextMeshProUGUI>();
 
         FindObjectOfType<AudioManager>().Stop("MenuMusic");
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerStats.Health == 0)
+        if (playerStats.Health == 0)
         {
             var time = TimeSpan.FromSeconds(timePlayed);
             timePlayedTextUGUI.text = time.ToString(@"hh\:mm\:ss\.fff");

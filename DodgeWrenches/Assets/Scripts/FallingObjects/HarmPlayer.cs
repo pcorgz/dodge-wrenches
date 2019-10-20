@@ -12,11 +12,13 @@ public class HarmPlayer : MonoBehaviour
     [SerializeField]
     private float maxBounceForce = 15f;
 
+    private PlayerStats playerStats;
     private Rigidbody rb;
     private bool canHarm;
 
     private void Awake()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -31,7 +33,7 @@ public class HarmPlayer : MonoBehaviour
                 && canHarm)
         {
             canHarm = false;
-            PlayerStats.Damage(damage);
+            playerStats.Damage(damage);
 
             BounceOff();
 

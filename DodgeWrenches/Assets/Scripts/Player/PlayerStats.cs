@@ -6,41 +6,51 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public static readonly string PLAYER_TAG = "Player";
-    public static int Health;
+
+    public int Health { get; set; }
+
+    public delegate void PlayerHealthChanged();
+    public event PlayerHealthChanged OnPlayerHealthChanged;
 
     [SerializeField]
     private int startingHealth = 2;
     [SerializeField]
     private GameObject mainCamera = null;
 
+    private readonly int MAX_HEALTH = 4;
     private static CamShake camShake;
 
     private void Awake()
     {
         camShake = mainCamera.GetComponent<CamShake>();
+        Health = startingHealth;
     }
 
     private void Start()
     {
-        Health = startingHealth;
-        HeartsUI.UpdateHearts();
+        //HeartsUI.UpdateHearts();
     }
 
-    public static void Heal(int amount)
+    public void Heal(int amount)
     {
-        Health = (Health + amount >= 4)
-                ? 4
+        // No more than max
+        Health = (Health + amount >= MAX_HEALTH)
+                ? MAX_HEALTH
                 : Health + amount;
-        HeartsUI.UpdateHearts();
+        //HeartsUI.UpdateHearts();
+
+        OnPlayerHealthChanged?.Invoke();
     }
 
-    public static void Damage(int damage)
+    public void Damage(int amount)
     {
-        // Avoids negative numbers
-        Health = (Health - damage >= 0)
-                ? Health - damage
-                : 0;
-        HeartsUI.UpdateHearts();
+        // no less than zero
+        Health = (Health - amount < 0)
+                ? 0
+                : Health - amount;
+        //HeartsUI.UpdateHearts();
+
+        OnPlayerHealthChanged?.Invoke();
 
         camShake.Shake();
     }

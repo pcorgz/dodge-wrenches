@@ -11,11 +11,18 @@ public class CollectHeart : MonoBehaviour
     [SerializeField]
     private GameObject particles = null;
 
+    private PlayerStats playerStats = null;
+
+    private void Awake()
+    {
+        playerStats = FindObjectOfType<PlayerStats>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(PlayerStats.PLAYER_TAG))
         {
-            PlayerStats.Heal(1);
+            playerStats.Heal(1);
             AudioManager.instance.Play("CollectHeart");
 
             var particlesGameObject = Instantiate(particles, transform.position, Quaternion.Euler(-90, 0f, 0f));
