@@ -9,8 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     public int Health { get; set; }
 
-    public delegate void PlayerHealthChanged();
-    public event PlayerHealthChanged OnPlayerHealthChanged;
+    public Action OnPlayerHealthChanged;
 
     [SerializeField]
     private int startingHealth = 2;
