@@ -54,11 +54,13 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        AudioManager.instance.Stop("GameMusic");
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
+        AudioManager.instance.Stop("GameMusic");
         sceneFader.FadeTo(menuSceneName);
     }
 }

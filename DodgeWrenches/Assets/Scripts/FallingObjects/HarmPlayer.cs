@@ -29,8 +29,7 @@ public class HarmPlayer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag(PlayerStats.PLAYER_TAG)
-                && canHarm)
+        if (collision.gameObject.CompareTag(PlayerStats.PLAYER_TAG) && canHarm)
         {
             canHarm = false;
             playerStats.Damage(damage);

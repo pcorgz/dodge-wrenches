@@ -9,6 +9,10 @@ public class FallingObject : MonoBehaviour
     private float minFallingVelocity = 0f;
     [SerializeField]
     private float maxFallingVelocity = 0f;
+    [SerializeField]
+    private float minHorizontalVelocity = 0f;
+    [SerializeField]
+    private float maxHorizontalVelocity = 0f;
 
     private Rigidbody rb;
     private float fallingVelocity;
@@ -21,13 +25,15 @@ public class FallingObject : MonoBehaviour
     private void Start()
     {
         fallingVelocity = Random.Range(minFallingVelocity, maxFallingVelocity);
-        rb.velocity = new Vector3(0f, fallingVelocity);
+        var horizontalVelocity = Random.Range(minHorizontalVelocity, maxHorizontalVelocity);
+
+        rb.velocity = new Vector3(horizontalVelocity, fallingVelocity);
     }
 
     private void FixedUpdate()
     {
         rb.velocity = rb.velocity.y < fallingVelocity
-                ? new Vector3(0f, fallingVelocity)
+                ? new Vector3(rb.velocity.x, fallingVelocity)
                 : rb.velocity;
     }
 

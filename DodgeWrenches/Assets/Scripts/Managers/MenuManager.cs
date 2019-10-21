@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        AudioManager.instance.Play("MenuMusic");
     }
 }
