@@ -9,7 +9,9 @@ public class CollectHeart : MonoBehaviour
     [SerializeField]
     private MeshRenderer bodyMesh = null;
     [SerializeField]
-    private GameObject particles = null;
+    private GameObject onCollectParticles = null;
+    [SerializeField]
+    private GameObject onMoveParticles = null;
 
     private PlayerStats playerStats = null;
 
@@ -25,10 +27,13 @@ public class CollectHeart : MonoBehaviour
             playerStats.Heal(1);
             AudioManager.instance.Play("CollectHeart");
 
-            var particlesGameObject = Instantiate(particles, transform.position, Quaternion.Euler(-90, 0f, 0f));
+            var particlesGameObject = Instantiate(onCollectParticles, transform.position, Quaternion.Euler(-90, 0f, 0f));
 
             GetComponent<Collider>().enabled = false;
             bodyMesh.enabled = false;
+            
+            var moveEmission = onMoveParticles.GetComponent<ParticleSystem>().emission;
+            moveEmission.enabled = false;
 
             Destroy(gameObject, 1.2f);
             Destroy(particlesGameObject, 1f);
