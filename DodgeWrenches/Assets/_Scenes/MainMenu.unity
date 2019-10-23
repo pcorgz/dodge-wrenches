@@ -244,8 +244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -115}
-  m_SizeDelta: {x: 600, y: 50}
+  m_AnchoredPosition: {x: 0, y: -83.5}
+  m_SizeDelta: {x: 366.9, y: 26.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157622486
 MonoBehaviour:
@@ -1804,7 +1804,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -35.800007}
-  m_SizeDelta: {x: 366.9, y: 71.6}
+  m_SizeDelta: {x: 366.9, y: 42.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1491601234
 MonoBehaviour:
@@ -2269,7 +2269,7 @@ PrefabInstance:
     - target: {fileID: 4856155427576308581, guid: 6fd585aa2664f374ea6447b9934d9c9f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4856155427576308581, guid: 6fd585aa2664f374ea6447b9934d9c9f,
         type: 3}
@@ -3169,4 +3169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyMesh: {fileID: 0}
-  particles: {fileID: 0}
+  onCollectParticles: {fileID: 0}
+  onMoveParticles: {fileID: 0}

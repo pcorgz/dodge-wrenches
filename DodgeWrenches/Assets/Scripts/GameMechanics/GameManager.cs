@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private string menuSceneName = "MainMenu";
     [SerializeField]
     private GameObject timePlayedText = null;
+    [SerializeField]
+    private Animator playerAnimator = null;
 
     private PlayerStats playerStats;
     public static float timePlayed;
@@ -37,8 +39,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerStats.Health == 0)
+        if (playerStats.Health == 0 && isGameOver == false)
         {
+            playerAnimator.SetTrigger("isDead");
             var time = TimeSpan.FromSeconds(timePlayed);
             timePlayedTextUGUI.text = time.ToString(@"hh\:mm\:ss\.fff");
 

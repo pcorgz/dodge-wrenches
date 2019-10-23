@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask wallLayerMask = 0;
     [SerializeField]
     private Image dashMeterBar = null;
+    [SerializeField]
+    Animator animator = null;
 
     private bool isDashing;
     private bool canDash;
@@ -64,16 +66,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
+        animator.SetBool("isRunning", horizontal != 0);
         // if == 0, stays the same as it was
         if (horizontal > 0)
         {
             isLookingRight = true;
-            body.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            body.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if (horizontal < 0)
         {
             isLookingRight = false;
-            body.transform.rotation = Quaternion.Euler(0f,  0f, 0f);
+            body.transform.rotation = Quaternion.Euler(0f,  -90f, 0f);
         }
     }
 
