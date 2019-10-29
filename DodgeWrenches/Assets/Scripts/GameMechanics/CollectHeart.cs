@@ -20,6 +20,12 @@ public class CollectHeart : MonoBehaviour
         playerStats = FindObjectOfType<PlayerStats>();
     }
 
+    private void OnEnable()
+    {
+        GetComponent<Collider>().enabled = true;
+        bodyMesh.enabled = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(PlayerStats.PLAYER_TAG))
@@ -35,8 +41,11 @@ public class CollectHeart : MonoBehaviour
             var moveEmission = onMoveParticles.GetComponent<ParticleSystem>().emission;
             moveEmission.enabled = false;
 
-            Destroy(gameObject, 1.2f);
+            StartCoroutine(GameManager.DisableGameObject(gameObject, 1.2f));
+            //Destroy(gameObject, 1.2f);
             Destroy(particlesGameObject, 1f);
         }
     }
+
+
 }

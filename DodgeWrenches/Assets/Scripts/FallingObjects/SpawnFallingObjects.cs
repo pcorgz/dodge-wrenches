@@ -10,7 +10,9 @@ public class SpawnFallingObjects : MonoBehaviour
     [SerializeField]
     private float maxTimeToSpawn = 5f;
     [SerializeField]
-    private GameObject fallingObjectPrefab = null;
+    private PooledMonoBehaviour fallingObjectPrefab = null;
+    [SerializeField]
+    private Transform pool = null;
     [SerializeField]
     private bool hasRandomRotation = false;
 
@@ -33,7 +35,8 @@ public class SpawnFallingObjects : MonoBehaviour
 
         if (spawnTimer >= timeUntilNextSpawn)
         {
-            SpawnNext();
+            //SpawnNext();
+            SpawnNextFromPool();
         }
     }
 
@@ -65,4 +68,19 @@ public class SpawnFallingObjects : MonoBehaviour
                 randRot
             );
     }
+
+    private void SpawnNextFromPool()
+    {
+        SetSpawnTime();
+        spawnTimer = 0;
+
+        var randY = Random.value >= 0.5 ? 90f : -90f;
+
+        var randRot = hasRandomRotation
+                ? Quaternion.Euler(Random.Range(0, 359), randY, Random.Range(0, 359))
+                : Quaternion.identity;
+
+        fallingObjectPrefab.Get<FallingObject>(pool, transform.position, randRot);
+    }
+
 }

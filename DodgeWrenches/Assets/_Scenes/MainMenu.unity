@@ -3104,7 +3104,6 @@ GameObject:
   - component: {fileID: 9024005036119065267}
   - component: {fileID: 9024005036119065266}
   - component: {fileID: 9024005036119065269}
-  - component: {fileID: 9024005036119065270}
   m_Layer: 14
   m_Name: Heart
   m_TagString: Heart
@@ -3156,18 +3155,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &9024005036119065270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9024005036119065265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b08522a7a1fd04c9756c5cd7d1c9e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bodyMesh: {fileID: 0}
-  onCollectParticles: {fileID: 0}
-  onMoveParticles: {fileID: 0}

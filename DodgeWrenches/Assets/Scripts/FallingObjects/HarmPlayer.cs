@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HarmPlayer : MonoBehaviour
 {
     public static readonly string HARMFUL_TAG = "Harmful";
+    public static readonly string HARM_REMOVER_TAG = "HarmRemover";
 
     [SerializeField]
     private int damage = 1;
@@ -22,8 +23,9 @@ public class HarmPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        gameObject.layer = 9;
         canHarm = true;
     }
 
@@ -41,6 +43,19 @@ public class HarmPlayer : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(HARM_REMOVER_TAG))
+        {
+            canHarm = false;
+            
+            rb.useGravity = true;
+
+            StartCoroutine(GameManager.DisableGameObject(gameObject));
+            gameObject.layer = 13;
+        }
+    }
+
     private void BounceOff()
     {
         float xForce = Random.Range(-maxBounceForce, maxBounceForce);
@@ -48,7 +63,8 @@ public class HarmPlayer : MonoBehaviour
         rb.AddForce(new Vector3(xForce, maxBounceForce, 0f), ForceMode.VelocityChange);
         rb.useGravity = true;
 
-        Destroy(gameObject, 2f);
+        //Destroy(gameObject, 2f);
+        StartCoroutine(GameManager.DisableGameObject(gameObject));
     }
 
 }

@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FallingObject : MonoBehaviour
+public class FallingObject : PooledMonoBehaviour
 {
     [SerializeField]
     private float minFallingVelocity = 0f;

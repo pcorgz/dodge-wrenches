@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Pool.ResetPools();
         playerStats = FindObjectOfType<PlayerStats>();
         timePlayedTextUGUI = timePlayedText.GetComponent<TextMeshProUGUI>();
 
@@ -66,4 +68,12 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.Stop("GameMusic");
         sceneFader.FadeTo(menuSceneName);
     }
+
+    public static IEnumerator DisableGameObject(GameObject gameObject, float timeUntilDeactivate = 2f)
+    {
+        yield return new WaitForSeconds(timeUntilDeactivate);
+
+        gameObject.SetActive(false);
+    }
+
 }
