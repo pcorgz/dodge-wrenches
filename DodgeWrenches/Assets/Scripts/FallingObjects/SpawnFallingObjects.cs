@@ -51,24 +51,6 @@ public class SpawnFallingObjects : MonoBehaviour
         startSpawning = true;
     }
 
-    private void SpawnNext()
-    {
-        SetSpawnTime();
-        spawnTimer = 0;
-
-        var randY = Random.value >= 0.5 ? 90f : -90f;
-
-        var randRot = hasRandomRotation
-                ? Quaternion.Euler(Random.Range(0, 359), randY, Random.Range(0, 359))
-                : Quaternion.identity;
-
-        Instantiate(
-                fallingObjectPrefab,
-                transform.position,
-                randRot
-            );
-    }
-
     private void SpawnNextFromPool()
     {
         SetSpawnTime();

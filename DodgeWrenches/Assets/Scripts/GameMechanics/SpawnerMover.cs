@@ -14,13 +14,19 @@ public class SpawnerMover : MonoBehaviour
     private float frequency = 20f;
     [SerializeField]
     private float magnitude = 0.5f;
+    [SerializeField]
+    private bool isVerticalMoving = false;
 
     private void Update()
     {
+        float position = isVerticalMoving
+                ? transform.position.y
+                : transform.position.x;
+
         // If moving right and position >= maxPosX
         // or moving left and position <= minPosX
-        if ((moveSpeed > 0 && transform.position.x >= maxPosX)
-                || (moveSpeed < 0 && transform.position.x <= minPosX))
+        if ((moveSpeed > 0 && position >= maxPosX)
+                || (moveSpeed < 0 && position <= minPosX))
         {
             // Change direction
             moveSpeed *= -1;
@@ -32,6 +38,13 @@ public class SpawnerMover : MonoBehaviour
         float newPosX = moveSpeed * Time.deltaTime;
         float newPosY = Mathf.Sin(Time.time * frequency) * magnitude;
 
-        transform.position += new Vector3(newPosX, newPosY);
+        if (isVerticalMoving)
+        {
+            transform.localPosition += new Vector3(newPosY, newPosX);
+        }
+        else
+        {
+            transform.localPosition += new Vector3(newPosX, newPosY);
+        }
     }
 }

@@ -88,7 +88,31 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Dash
     clip: {fileID: 8300000, guid: 77706cc62aa58de4eb256d0635fcf1d9, type: 3}
-    volume: 0.5
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bounce_1
+    clip: {fileID: 8300000, guid: ff813d4950a56b4458e9cb9a3d7a9b3c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bounce_2
+    clip: {fileID: 8300000, guid: ca2684f923f3a97428fbbf632ef28707, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bounce_3
+    clip: {fileID: 8300000, guid: a163be9bec32fae4eb61ed1d2b292a2b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bounce_4
+    clip: {fileID: 8300000, guid: 0e9d5d79174f4684f84af6d9e7efcb49, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
