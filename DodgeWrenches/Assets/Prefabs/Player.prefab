@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9707701, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -493,6 +493,7 @@ GameObject:
   - component: {fileID: 4856155427576308580}
   - component: {fileID: 4856155427576308579}
   - component: {fileID: 1022896449264223782}
+  - component: {fileID: 2854660135702347859}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -545,15 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb031f01f3932f47875f543ced372e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  dashVelocity: 40
+  dashVelocity: 25
   maxTimeDashing: 0.1
-  resetDashTime: 2
   body: {fileID: 8869217216082271342}
   wallLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  dashMeterBar: {fileID: 4856155427059770658}
   animator: {fileID: 8869217216082271343}
 --- !u!135 &1022896449264223782
 SphereCollider:
@@ -568,6 +566,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.30087078
   m_Center: {x: 0.015002847, y: 1.2940975, z: 0}
+--- !u!114 &2854660135702347859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856155427576308601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc308050d35b36488a622319c5c2e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashMeterBar: {fileID: 4856155427059770658}
+  dashMeterTextGO: {fileID: 4856155427065984511}
 --- !u!1 &4856155427922521340
 GameObject:
   m_ObjectHideFlags: 0

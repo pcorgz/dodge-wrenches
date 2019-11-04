@@ -50,7 +50,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 2
 --- !u!114 &4188632885821062036
 MonoBehaviour:
@@ -83,6 +83,7 @@ MonoBehaviour:
   maxFallingVelocity: -15
   minHorizontalVelocity: -10
   maxHorizontalVelocity: 10
+  doNotClamp: 0
 --- !u!136 &8538324569926494305
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -7,37 +7,31 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 8f;
-    [SerializeField]
     private float dashVelocity = 16f;
     [SerializeField]
     private float maxTimeDashing = .5f;
-    [SerializeField]
-    private float resetDashTime = 3f;
     [SerializeField]
     private GameObject body = null;
     [SerializeField]
     private LayerMask wallLayerMask = 0;
     [SerializeField]
-    private Image dashMeterBar = null;
-    [SerializeField]
     Animator animator = null;
 
     private bool isDashing;
-    private bool canDash;
     private bool isLookingRight;
     private Rigidbody rb;
+    private PlayerStats playerStats;
     private float horizontal;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerStats = FindObjectOfType<PlayerStats>();
     }
 
     private void Start()
     {
         isDashing = false;
-        canDash = true;
         isLookingRight = true;
     }
 
@@ -46,12 +40,6 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.isGameOver) return;
 
         Movement();
-        if (canDash == false)
-        {
-            dashMeterBar.transform.localScale += new Vector3(Time.deltaTime / resetDashTime, 0f);
-            if (dashMeterBar.transform.localScale.x >= 1)
-                dashMeterBar.transform.localScale = Vector3.one;
-        }
     }
 
     private void FixedUpdate()
@@ -82,24 +70,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        // Press space + canDash + Status == Normal
+        if (Input.GetKeyDown(KeyCode.Space) 
+                && playerStats.CanDash 
+                && playerStats.Status == PlayerStats.PlayerStatus.Normal)
         {
-            canDash = false;
+            playerStats.CanDash = false;
             isDashing = true;
             horizontal = 0f;
-            dashMeterBar.transform.localScale = new Vector3(0f, 1f, 1f);
+            //DashMeter.DashMeterBar.transform.localScale = new Vector3(0f, 1f, 1f);
             StartCoroutine(Dash());
         }
 
         if (isDashing == false)
         {
             // not dashing so we can move
-            horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime * moveSpeed;
+            horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime * playerStats.MoveSpeed;
         }
     }
 
     private IEnumerator Dash()
     {
+        playerStats.SetDashStatus();
         AudioManager.instance.Play("Dash");
         float velocity = isLookingRight ? dashVelocity : -dashVelocity;
         rb.velocity = new Vector3(velocity, 0f);
@@ -113,8 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator ResetDash()
     {
-        yield return new WaitForSeconds(resetDashTime);
-        canDash = true;
+        playerStats.SetNormalStatus();
+        yield return new WaitForSeconds(playerStats.ResetDashTime);
+        playerStats.CanDash = true;
     }
 
     private void OnCollisionEnter(Collision collision)
