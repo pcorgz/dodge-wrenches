@@ -15,7 +15,7 @@ public class HeartsUI : MonoBehaviour
     {
         HeartsList = heartsList;
         playerStats = FindObjectOfType<PlayerStats>();
-        playerStats.OnPlayerHealthChanged += UpdateHearts;
+        PlayerStats.OnPlayerHealthChanged += UpdateHearts;
     }
 
     private void Start()

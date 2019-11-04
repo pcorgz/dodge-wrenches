@@ -158,8 +158,9 @@ MonoBehaviour:
   initialPoolSize: 10
   minFallingVelocity: -5
   maxFallingVelocity: -15
-  minHorizontalVelocity: -0.5
-  maxHorizontalVelocity: 0.5
+  minHorizontalVelocity: -0.8
+  maxHorizontalVelocity: 0.8
+  doNotClamp: 0
 --- !u!65 &7320708920834738896
 BoxCollider:
   m_ObjectHideFlags: 0

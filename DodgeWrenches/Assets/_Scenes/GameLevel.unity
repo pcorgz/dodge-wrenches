@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3610691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: 6.5, z: 0}
+  m_LocalPosition: {x: 9, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 765232402}
@@ -1816,6 +1816,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670242929}
   m_CullTransparentMesh: 0
+--- !u!1 &704353332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 704353332, guid: 6fd585aa2664f374ea6447b9934d9c9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4856155426493396599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &765232401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,7 +2885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431215949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: -4, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 765232402}
@@ -3187,6 +3193,7 @@ MonoBehaviour:
   initialMoveSpeed: 8
   startingHealth: 2
   initialResetDashTime: 3
+  dizzyBirds: {fileID: 704353332}
   mainCamera: {fileID: 519420028}
 --- !u!4 &1510370859
 Transform:
@@ -4169,8 +4176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToStart: 30
-  minTimeToSpawn: 3
-  maxTimeToSpawn: 8
+  minTimeToSpawn: 4
+  maxTimeToSpawn: 9
   fallingObjectPrefab: {fileID: 4063618641155970945, guid: f9e2df2195ac52a48beb2d6eeac835fb,
     type: 3}
   pool: {fileID: 1080580667}
@@ -4366,7 +4373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981238582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: 4, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 765232402}

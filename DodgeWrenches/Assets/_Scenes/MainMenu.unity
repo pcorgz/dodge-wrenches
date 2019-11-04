@@ -367,6 +367,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157622484}
   m_CullTransparentMesh: 0
+--- !u!1 &396858678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 704353332, guid: 6fd585aa2664f374ea6447b9934d9c9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1782954232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &424204990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1335,6 +1341,7 @@ MonoBehaviour:
   initialMoveSpeed: 8
   startingHealth: 2
   initialResetDashTime: 3
+  dizzyBirds: {fileID: 396858678}
   mainCamera: {fileID: 1260604118}
 --- !u!1 &1263438694
 GameObject:

@@ -20,7 +20,11 @@ public class DashMeter : MonoBehaviour
     {
         dashMeterText = dashMeterTextGO.GetComponent<TextMeshProUGUI>();
         playerStats = FindObjectOfType<PlayerStats>();
-        playerStats.OnStatusChanged += ChangeMeter;
+    }
+
+    private void Start()
+    {
+        PlayerStats.OnStatusChanged += ChangeMeter;
     }
 
     private void ChangeMeter()
@@ -49,7 +53,8 @@ public class DashMeter : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (dashMeterBar.transform.localScale.x < 1f)
+        if (dashMeterBar.transform.localScale.x < 1f
+                && playerStats.Status != PlayerStats.PlayerStatus.Dashing)
         {
             dashMeterBar.transform.localScale +=
             new Vector3(Time.deltaTime / playerStats.ResetDashTime, 0f);

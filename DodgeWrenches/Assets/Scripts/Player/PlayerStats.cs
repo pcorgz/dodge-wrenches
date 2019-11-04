@@ -20,8 +20,8 @@ public class PlayerStats : MonoBehaviour
     public int Health { get; set; }
     public float ResetDashTime { get; set; }
 
-    public Action OnStatusChanged;
-    public Action OnPlayerHealthChanged;
+    public static event Action OnStatusChanged;
+    public static event Action OnPlayerHealthChanged;
 
     [SerializeField]
     public float initialMoveSpeed = 8f;
@@ -30,6 +30,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private float initialResetDashTime = 3f;
     [SerializeField]
+    private GameObject dizzyBirds = null;
+
+    [SerializeField]
     private GameObject mainCamera = null;
 
     private readonly int MAX_HEALTH = 4;
@@ -37,6 +40,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+        dizzyBirds.SetActive(false);
         Status = PlayerStatus.Normal;
         camShake = mainCamera.GetComponent<CamShake>();
         MoveSpeed = initialMoveSpeed;
@@ -85,6 +89,7 @@ public class PlayerStats : MonoBehaviour
         OnStatusChanged?.Invoke();
 
         float speed = initialMoveSpeed * slowFactor;
+        dizzyBirds.SetActive(true);
 
         StartCoroutine(ChangeSpeed(speed, seconds));
     }
@@ -94,6 +99,7 @@ public class PlayerStats : MonoBehaviour
         MoveSpeed = speed;
         yield return new WaitForSeconds(seconds);
 
+        dizzyBirds.SetActive(false);
         MoveSpeed = initialMoveSpeed;
         Status = PlayerStatus.Normal;
         OnStatusChanged?.Invoke();
