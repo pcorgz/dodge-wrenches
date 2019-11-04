@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 
 public class PreparePool : MonoBehaviour
@@ -39,13 +39,6 @@ public class PreparePool : MonoBehaviour
         var notNullPrefabs = prefabs.Where(t => t != null);
         foreach (var prefab in notNullPrefabs)
         {
-            //if (PrefabUtility.GetPrefabType(prefab) != PrefabType.Prefab)
-            if (PrefabUtility.GetPrefabAssetType(prefab) == PrefabAssetType.NotAPrefab)
-            {
-                Debug.LogError($"{prefab.gameObject.name} is not a prefab. It has been removed.");
-                prefabsToRemove.Add(prefab.gameObject);
-            }
-
             PooledMonoBehaviour poolablePrefab = prefab.GetComponent<PooledMonoBehaviour>();
             if (poolablePrefab == null)
             {
